@@ -1,0 +1,174 @@
+.product-card {
+  position: relative;
+
+  min-width: 210px;
+
+  background: #ffffff;
+
+  padding: 18px;
+
+  border-radius: 4px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.12);
+}
+
+.wishlist-button {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  color: #555;
+
+  cursor: pointer;
+
+  z-index: 2;
+}
+
+.wishlist-button:hover {
+  color: #ff3f6c;
+}
+
+.wishlist-button.active {
+  color: #ff3f6c;
+  background: #fff0f3;
+}
+
+.product-image-container {
+  width: 100%;
+  height: 190px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 15px;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transition: transform 0.25s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.04);
+}
+
+.product-name {
+  margin: 0 0 8px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #212121;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 8px;
+}
+
+.product-rating span {
+  padding: 3px 6px;
+
+  background: #388e3c;
+
+  color: #ffffff;
+
+  border-radius: 3px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.product-rating small {
+  color: #878787;
+  font-size: 11px;
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.product-price strong {
+  font-size: 18px;
+  color: #212121;
+}
+
+.product-mrp {
+  color: #878787;
+  font-size: 12px;
+  text-decoration: line-through;
+}
+
+.product-discount {
+  color: #388e3c;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.add-cart-button {
+  width: 100%;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  margin-top: 14px;
+
+  border: none;
+  border-radius: 3px;
+
+  background: #ff9f00;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.add-cart-button:hover {
+  background: #fb8c00;
+}

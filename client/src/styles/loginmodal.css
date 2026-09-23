@@ -1,0 +1,109 @@
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.login-drawer {
+  position: relative;
+  width: min(100%, 430px);
+  min-height: 100%;
+  padding: 30px 26px;
+  background: #ffffff;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.18);
+}
+
+.login-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  background: #f1f3f6;
+  color: #212121;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.login-drawer-copy {
+  margin: 6px 0 34px;
+  padding-right: 30px;
+}
+
+.login-drawer h2 {
+  margin: 0 0 10px;
+  color: #212121;
+  font-size: 22px;
+}
+
+.login-drawer-copy p,
+.login-terms {
+  color: #777777;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.login-drawer label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2874f0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.phone-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 14px;
+  border: 1px solid #2874f0;
+  border-radius: 4px;
+}
+
+.phone-input span {
+  color: #555555;
+  font-size: 15px;
+}
+
+.phone-input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  color: #212121;
+  font-size: 16px;
+}
+
+.login-error {
+  margin: 10px 0 0;
+  color: #d32f2f;
+  font-size: 13px;
+}
+
+.login-terms {
+  margin: 24px 0;
+}
+
+.login-submit {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 3px;
+  background: #2874f0;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-submit:disabled {
+  background: #c7c7c7;
+  cursor: not-allowed;
+}
