@@ -1,0 +1,77 @@
+.account-page-shell {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 18px;
+  width: min(100%, 1180px);
+  min-height: 70vh;
+  margin: 0 auto;
+  padding: 24px 20px 50px;
+  background: #f1f3f6;
+}
+
+.account-sidebar {
+  align-self: start;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.account-user-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 14px;
+  border: none;
+  border-bottom: 1px solid #eeeeee;
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.account-user-card > span:nth-child(2) { display: flex; flex: 1; flex-direction: column; gap: 3px; }
+.account-user-card small { color: #878787; }
+.account-user-card strong { font-size: 13px; font-weight: 600; }
+.account-user-card svg { color: #878787; }
+.account-avatar { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: #2874f0; color: #ffffff; font-size: 12px; font-weight: 700; }
+.account-nav { display: grid; padding: 8px 0; }
+.account-nav button { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border: none; background: #ffffff; color: #555555; text-align: left; cursor: pointer; }
+.account-nav button:hover, .account-nav button.active { background: #f5f8ff; color: #2874f0; font-weight: 600; }
+.account-nav svg { font-size: 18px; }
+.gift-content { min-width: 0; }
+.gift-heading-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 18px; }
+.gift-heading-row h1 { margin: 0 0 5px; font-size: 25px; }
+.gift-heading-row p { margin: 0; color: #777777; font-size: 13px; }
+.gift-heading-row button, .gift-hero-card button, .gift-balance-panel button { display: inline-flex; align-items: center; gap: 7px; padding: 11px 15px; border: none; border-radius: 3px; background: #2874f0; color: #ffffff; font-weight: 600; cursor: pointer; }
+.gift-hero-card { display: flex; align-items: center; justify-content: space-between; min-height: 210px; margin-bottom: 18px; padding: 28px 36px; overflow: hidden; border-radius: 3px; background: linear-gradient(115deg, #2874f0, #5b32d5); color: #ffffff; }
+.gift-eyebrow { color: #ffe500; font-size: 11px; font-weight: 800; letter-spacing: 1.4px; }
+.gift-hero-card h2 { margin: 12px 0 8px; font-size: 30px; }
+.gift-hero-card p { margin: 0 0 20px; color: #e6eaff; }
+.gift-hero-card button { background: #ffe500; color: #171717; }
+.gift-hero-icon { width: 155px; height: 155px; color: rgba(255, 255, 255, 0.28); stroke-width: 1; transform: rotate(-12deg); }
+.gift-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 18px; }
+.gift-panel { padding: 20px; background: #ffffff; border-radius: 3px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+.gift-panel-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; color: #555555; font-size: 15px; font-weight: 600; }
+.gift-panel-title span { display: inline-flex; align-items: center; gap: 9px; }
+.gift-panel-title svg { color: #2874f0; }
+.gift-balance-panel > strong { display: block; margin-bottom: 4px; font-size: 30px; }
+.gift-panel p { color: #777777; font-size: 13px; line-height: 1.5; }
+.gift-text-button { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; padding: 0; border: none; background: transparent; color: #2874f0; font-weight: 600; cursor: pointer; }
+.gift-activity { min-height: 180px; }
+.gift-empty-activity { display: grid; place-items: center; padding: 28px; color: #a0a0a0; text-align: center; }
+.gift-empty-activity svg { width: 40px; height: 40px; margin-bottom: 8px; stroke-width: 1.2; }
+.gift-empty-activity p { margin: 0; }
+.gift-login-state { min-height: 65vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; background: #f1f3f6; text-align: center; }
+.gift-login-state > svg { width: 82px; height: 82px; margin-bottom: 20px; color: #c5c5c5; stroke-width: 1.1; }
+.gift-login-state h1 { margin: 0 0 10px; font-size: 26px; }
+.gift-login-state p { max-width: 430px; margin: 0 0 25px; color: #777777; }
+.gift-login-state button { width: 190px; height: 46px; border: none; border-radius: 3px; background: #2874f0; color: #ffffff; font-size: 16px; font-weight: 700; cursor: pointer; }
+
+@media (max-width: 750px) {
+  .account-page-shell { grid-template-columns: 1fr; padding: 14px 12px 35px; }
+  .account-sidebar { display: none; }
+  .gift-heading-row { align-items: flex-start; flex-direction: column; }
+  .gift-card-grid { grid-template-columns: 1fr; }
+  .gift-hero-card { padding: 24px; }
+  .gift-hero-card h2 { font-size: 25px; }
+  .gift-hero-icon { width: 100px; height: 100px; }
+}
