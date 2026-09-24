@@ -34,7 +34,7 @@ const Navbar = ({
   isScrolled = false,
 }) => {
   const navigate = useNavigate();
-  const { cart, logout, user } = useShop();
+  const { cart, logout, user, profile } = useShop();
   const [searchFocused, setSearchFocused] = useState(false);
   const [showLoginNudge, setShowLoginNudge] = useState(false);
 
@@ -142,9 +142,9 @@ const Navbar = ({
         </div>
 
         <div className={`login-dropdown-wrapper ${!user ? "logged-out-login" : ""}`}>
-          <button className="login-button" onClick={() => (user ? navigate("/orders") : navigate("/login"))}>
+          <button className="login-button" onClick={() => (user ? navigate("/account") : navigate("/login"))}>
             <FiUser />
-            <span>{user ? "Account" : "Login"}</span>
+            <span>{user ? (profile?.firstName || user?.name || "JEET") : "Login"}</span>
             <FiChevronDown className="login-arrow-down" />
             <FiChevronUp className="login-arrow-up" />
           </button>
@@ -158,7 +158,7 @@ const Navbar = ({
           <div className="login-dropdown-menu">
             <div className="login-menu-header">
               {user ? (
-                <span>Hello, <strong>{user.phone || "Customer"}</strong></span>
+                <span>Hello, <strong>{profile?.firstName ? `${profile.firstName} ${profile.lastName || ""}`.trim() : (user.phone || "JEET CHALTHANWALA")}</strong></span>
               ) : (
                 <>
                   <span>New customer?</span>
@@ -173,7 +173,7 @@ const Navbar = ({
               <button
                 type="button"
                 className="login-menu-item"
-                onClick={() => handleProtectedAction(() => navigate("/orders"))}
+                onClick={() => handleProtectedAction(() => navigate("/account"))}
               >
                 <FiUser className="menu-icon" />
                 <span>My Profile</span>
@@ -227,7 +227,7 @@ const Navbar = ({
               <button
                 type="button"
                 className="login-menu-item"
-                onClick={() => handleProtectedAction(() => window.alert("Gift Cards feature coming soon."))}
+                onClick={() => handleProtectedAction(() => navigate("/gift-cards"))}
               >
                 <FiCreditCard className="menu-icon" />
                 <span>Gift Cards</span>

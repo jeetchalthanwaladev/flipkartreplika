@@ -171,8 +171,8 @@
 
 .login-error-message {
   color: #d32f2f;
-  font-size: 12px;
-  margin-top: 6px;
+  font-size: 13px;
+  margin-top: 10px;
 }
 
 .terms-text {
@@ -215,6 +215,113 @@
   background: #e65512;
 }
 
+/* OTP Verification Step Styling */
+.otp-verification-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.otp-instruction {
+  font-size: 14px;
+  color: #212121;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+
+.otp-phone-text {
+  font-weight: 600;
+}
+
+.otp-edit-btn {
+  background: none;
+  border: none;
+  color: #2874f0;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0 4px;
+  margin-left: 2px;
+}
+
+.otp-edit-btn:hover {
+  text-decoration: underline;
+}
+
+.demo-otp-banner {
+  background: #e8f0fe;
+  border: 1px solid #b6d4fe;
+  color: #1a73e8;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.otp-input-section {
+  margin: 10px 0 25px;
+}
+
+.otp-boxes-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.otp-boxes {
+  display: flex;
+  gap: 10px;
+}
+
+.otp-digit-box {
+  width: 36px;
+  height: 42px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #212121;
+  border: none;
+  border-bottom: 2px solid #2874f0;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.otp-digit-box:focus {
+  border-bottom-color: #2874f0;
+  background: rgba(40, 116, 240, 0.04);
+}
+
+.otp-digit-box.filled {
+  border-bottom-color: #2874f0;
+}
+
+.otp-timer-col {
+  font-size: 14px;
+  color: #777777;
+  font-weight: 500;
+  min-width: 50px;
+  text-align: right;
+}
+
+.otp-resend-btn {
+  background: none;
+  border: none;
+  color: #2874f0;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.otp-resend-btn:hover {
+  text-decoration: underline;
+}
+
+.login-submit-btn.verify-btn {
+  margin-top: 20px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .login-card {
@@ -230,5 +337,15 @@
   .login-card-right {
     width: 100%;
     padding: 30px 24px;
+  }
+
+  .otp-boxes {
+    gap: 6px;
+  }
+
+  .otp-digit-box {
+    width: 30px;
+    height: 38px;
+    font-size: 16px;
   }
 }

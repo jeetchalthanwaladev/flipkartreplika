@@ -77,7 +77,6 @@ const categories = [
 const CategoryBar = ({
   activeCategory,
   onCategoryChange,
-  onBrandClick,
   isScrolled = false,
 }) => {
   return (

@@ -50,6 +50,16 @@
   line-height: 1.5;
 }
 
+.otp-instruction-modal {
+  font-size: 13px;
+  color: #333333;
+  line-height: 1.5;
+
+  strong {
+    font-weight: 600;
+  }
+}
+
 .login-drawer label {
   display: block;
   margin-bottom: 8px;
@@ -97,13 +107,35 @@
   height: 48px;
   border: none;
   border-radius: 3px;
-  background: #2874f0;
+  background: #fb641b;
   color: #ffffff;
   font-weight: 700;
+  font-size: 15px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .login-submit:disabled {
   background: #c7c7c7;
   cursor: not-allowed;
+}
+
+.login-mode-toggle {
+  width: 100%;
+  margin-top: 16px;
+  border: none;
+  background: transparent;
+  color: #2874f0;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.otp-modal-section {
+  margin: 20px 0;
+}
+
+.otp-modal-timer-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
 }
