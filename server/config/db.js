@@ -35,6 +35,16 @@ const initializeDatabase = async () => {
       unit_price NUMERIC(12, 2) NOT NULL CHECK (unit_price >= 0),
       quantity INTEGER NOT NULL CHECK (quantity > 0)
     );
+
+    CREATE TABLE IF NOT EXISTS otps (
+      id SERIAL PRIMARY KEY,
+      phone VARCHAR(20) NOT NULL,
+      otp_code VARCHAR(10) NOT NULL,
+      expires_at TIMESTAMPTZ NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_otps_phone ON otps(phone);
   `);
 };
 
