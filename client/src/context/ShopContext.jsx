@@ -20,6 +20,115 @@ export function ShopProvider({ children }) {
   });
   const [user, setUser] = useState(null);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [profile, setProfile] = useState(() => {
+    try {
+      const saved = localStorage.getItem("flipkart_user_profile");
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // fallback
+    }
+    return {
+      firstName: "JEET",
+      lastName: "CHALTHANWALA",
+      gender: "Male",
+      email: "pateljc1115@gmail.com",
+      phone: "+916359347716",
+    };
+  });
+
+  const [address, setAddress] = useState(() => {
+    try {
+      const saved = localStorage.getItem("flipkart_user_address");
+      if (saved !== null) return JSON.parse(saved);
+    } catch {
+      // fallback
+    }
+    return {
+      name: "Cahlthanwala Jeet",
+      phone: "6359347716",
+      pincode: "395003",
+      locality: "Lal Darwaja",
+      addressText: "6/1638, 3rd flor, Siv sadan Apartment, Gundi sheri, Lal Darwaja, surat",
+      city: "Surat",
+      state: "Gujarat",
+      type: "HOME"
+    };
+  });
+
+  const [addresses, setAddresses] = useState(() => {
+    try {
+      const saved = localStorage.getItem("flipkart_user_addresses");
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // fallback
+    }
+    return [
+      {
+        id: 1,
+        name: "Cahlthanwala Jeet",
+        phone: "6359347716",
+        pincode: "395003",
+        locality: "Lal Darwaja",
+        addressText: "6/1638, 3rd flor, Siv sadan Apartment, Gundi sheri, Lal Darwaja,surat - 395003, Siv sadan Apartment, Lal Darwaja, Surat, Gujarat - 395003",
+        city: "Surat",
+        state: "Gujarat",
+        type: "HOME"
+      },
+      {
+        id: 2,
+        name: "JC PATEL",
+        phone: "6359347716",
+        pincode: "395003",
+        locality: "Lal Darwaza",
+        addressText: "6/1638 ,Gndisery, Lal Darwaza,surat, Surat, Gujarat - 395003",
+        city: "Surat",
+        state: "Gujarat",
+        type: "HOME"
+      }
+    ];
+  });
+
+  const addAddress = useCallback((newAddr) => {
+    setAddresses((prev) => {
+      const item = { ...newAddr, id: Date.now() };
+      const next = [item, ...prev];
+      localStorage.setItem("flipkart_user_addresses", JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
+  const editAddress = useCallback((id, updated) => {
+    setAddresses((prev) => {
+      const next = prev.map((a) => (a.id === id ? { ...a, ...updated } : a));
+      localStorage.setItem("flipkart_user_addresses", JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
+  const deleteAddress = useCallback((id) => {
+    setAddresses((prev) => {
+      const next = prev.filter((a) => a.id !== id);
+      localStorage.setItem("flipkart_user_addresses", JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
+  const saveAddress = useCallback((newAddress) => {
+    setAddress(newAddress);
+    if (newAddress) {
+      localStorage.setItem("flipkart_user_address", JSON.stringify(newAddress));
+    } else {
+      localStorage.removeItem("flipkart_user_address");
+    }
+  }, []);
+
+  const updateProfile = useCallback((updatedData) => {
+    setProfile((prev) => {
+      const next = { ...prev, ...updatedData };
+      localStorage.setItem("flipkart_user_profile", JSON.stringify(next));
+      return next;
+    });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("flipkart_cart", JSON.stringify(cart));
@@ -83,8 +192,41 @@ export function ShopProvider({ children }) {
   const clearCart = useCallback(() => setCart([]), []);
   const openLogin = useCallback(() => setLoginOpen(true), []);
   const closeLogin = useCallback(() => setLoginOpen(false), []);
+  const requestOtp = useCallback(async (phone) => {
+    const result = await apiRequest("/auth/send-otp", {
+      method: "POST",
+      body: JSON.stringify({ phone }),
+    });
+    return result;
+  }, []);
+
+  const verifyOtp = useCallback(async (phone, otp) => {
+    const result = await apiRequest("/auth/verify-otp", {
+      method: "POST",
+      body: JSON.stringify({ phone, otp }),
+    });
+    if (result.user) {
+      setUser(result.user);
+      setProfile((prev) => ({
+        ...prev,
+        phone: `+91${phone.slice(-10)}`,
+      }));
+    }
+    closeLogin();
+    return result;
+  }, [closeLogin]);
+
   const login = useCallback(async (phone) => {
     const result = await apiRequest("/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ phone }),
+    });
+    setUser(result.user);
+    closeLogin();
+    return result.user;
+  }, [closeLogin]);
+  const signup = useCallback(async (phone) => {
+    const result = await apiRequest("/auth/signup", {
       method: "POST",
       body: JSON.stringify({ phone }),
     });
@@ -106,6 +248,14 @@ export function ShopProvider({ children }) {
         wishlist,
         savedForLater,
         user,
+        profile,
+        updateProfile,
+        address,
+        saveAddress,
+        addresses,
+        addAddress,
+        editAddress,
+        deleteAddress,
         loginOpen,
         addToCart,
         toggleWishlist,
@@ -116,6 +266,9 @@ export function ShopProvider({ children }) {
         openLogin,
         closeLogin,
         login,
+        signup,
+        requestOtp,
+        verifyOtp,
         logout,
       }}
     >
